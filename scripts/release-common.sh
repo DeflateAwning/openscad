@@ -323,6 +323,7 @@ case $OS in
     MACOSX)
         cd $DEPLOYDIR
         /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $VERSIONDATE" OpenSCAD.app/Contents/Info.plist
+        codesign --force --deep --sign - ./OpenSCAD.app
         macdeployqt OpenSCAD.app -dmg -no-strip
         mv OpenSCAD.dmg OpenSCAD-$VERSION.dmg
         echo "Binary created: OpenSCAD-$VERSION.dmg"
